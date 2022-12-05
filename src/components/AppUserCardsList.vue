@@ -3,13 +3,9 @@
     <li v-for="item in list" :key="item.email">
       <slot name="listitem" :user="item">
         <div class="card">
-          <img
-            class="resposive"
-            :src="item.picture.large"
-            :alt="item.name.first + ' ' + item.name.last"
-          />
+          <img class="resposive" :src="item.picture.large" :alt="item.name.first + ' ' + item.name.last" />
           <div class="card-body">
-            
+
             <slot name="first" :text="item.name.first"></slot>
 
             <slot name="last" :text="item.name.last"></slot>
@@ -30,7 +26,7 @@
 export default {
   props: {
     list: Array,
-    default: () => {}
+    default: () => { }
   }
 };
 </script>

@@ -1,24 +1,12 @@
-
 <template>
   <section>
     <slot name="title">Users</slot>
-    <slot
-      name="userlist"
-      :count="data.results.length"
-      :list="data.results"
-      :remove="remove"
-      v-if="state === 'loaded'"
-    >
+    <slot name="userlist" :count="data.results.length" :list="data.results" :remove="remove" v-if="state === 'loaded'">
       <ul class="userlist">
         <li v-for="item in data.results" :key="item.email">
           <slot name="listitem" :user="item">
             <div>
-              <img
-                width="48"
-                height="48"
-                :src="item.picture.large"
-                :alt="item.name.first + ' ' + item.name.last"
-              />
+              <img width="48" height="48" :src="item.picture.large" :alt="item.name.first + ' ' + item.name.last" />
               <div>
                 <div>{{ item.name.first }}</div>
                 <slot name="secondrow" :item="item"></slot>
@@ -44,12 +32,11 @@ const states = {
   loaded: "loaded",
   failed: "failed"
 };
-
 export default {
   props: {
     secondrow: {
       type: Function,
-      default: () => {}
+      default: () => { }
     }
   },
   data() {
@@ -93,16 +80,17 @@ export default {
 .userlist {
   margin: 10px;
 }
+
 .userlist img {
   border-radius: 50%;
   margin-right: 1rem;
 }
 
-.userlist li + li {
+.userlist li+li {
   margin-top: 10px;
 }
 
-.userlist li > div {
+.userlist li>div {
   display: flex;
   align-items: center;
 }
